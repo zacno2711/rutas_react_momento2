@@ -8,10 +8,13 @@ export const CreateUserScreen = (props) => {
     email: '',
     phone: '',
   });
-  saveNewUser = async () =>{
-    await createUser(user)
+  saveNewUser = async () => {
+    await createUser(user);
+    // Llamamos a la función de actualización pasada como parámetro
+    if (props.route.params && props.route.params.onUpdateUserList) {
+      props.route.params.onUpdateUserList();
+    }
     props.navigation.navigate('UserList');
-
   }
 
   const handleChangeText = (name, value) => {
