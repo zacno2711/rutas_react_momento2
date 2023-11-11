@@ -1,40 +1,22 @@
 import React, { useState } from 'react';
 import { View, Button, TextInput, StyleSheet } from 'react-native';
-import firebase from '../../db/firebaseConfig';
+import { createUser } from '../../db/firebaseConfig';
 
-export const CreateUserScreen = () => {
+export const CreateUserScreen = (props) => {
   const [user, setUser] = useState({
     name: '',
     email: '',
     phone: '',
   });
+  saveNewUser = async () =>{
+    await createUser(user)
+    props.navigation.navigate('UserList');
+
+  }
 
   const handleChangeText = (name, value) => {
     setUser({ ...user, [name]: value });
-  };
 
-  const saveNewUser = async () => {
-    if (user.name === '') {
-      alert('Por favor, proporciona un nombre');
-    } else {
-      try {
-        await firebase.db.collection('users').add({
-          name: user.name,
-          email: user.email,
-          phone: user.phone,
-        });
-        alert('Usuario guardado con éxito');
-        // Limpia los campos del formulario
-        setUser({
-          name: '',
-          email: '',
-          phone: '',
-        });
-      } catch (error) {
-        console.error('Error al guardar el usuario: ', error);
-        alert('Hubo un error al guardar el usuario');
-      }
-    }
   };
 
   return (
