@@ -19,9 +19,9 @@ function UserStack (){
     return(
         <>
             <Stack.Navigator>
-                <Stack.Screen name= "UserList" component={UserList}/>
-                <Stack.Screen name= "CreateUserScreen"component={CreateUserScreen}/>
-                <Stack.Screen name= "UserDetailScreen"component={UserDetailScreen}/>
+                <Stack.Screen name= "UserList" component={UserList} options={{title:"LISTA DE USUARIOS"}}/>
+                <Stack.Screen name= "CreateUserScreen"component={CreateUserScreen} options={{title:"CREAR NUEVO USUARIO"}}/>
+                <Stack.Screen name= "UserDetailScreen"component={UserDetailScreen} options={{title:"EDITAR USUARIO"}}/>
             </Stack.Navigator>
         </>
     )

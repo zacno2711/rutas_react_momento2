@@ -4,12 +4,12 @@ import colors from '../src/utils/colors';
 import { Alert } from 'react-native';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBw1xDq5F-AqohVvWRf3f99ykPMox9K0YQ",
-  authDomain: "react-native-firebase-e8ee8.firebaseapp.com",
-  projectId: "react-native-firebase-e8ee8",
-  storageBucket: "react-native-firebase-e8ee8.appspot.com",
-  messagingSenderId: "1086702294556",
-  appId: "1:1086702294556:web:aed9a4e027525caa3cf1d9"
+  apiKey: "AIzaSyA_SQykOb5251q508_IO_HvXmT4pNrawUY",
+  authDomain: "rutas-react-84049.firebaseapp.com",
+  projectId: "rutas-react-84049",
+  storageBucket: "rutas-react-84049.appspot.com",
+  messagingSenderId: "248598811354",
+  appId: "1:248598811354:web:42970302a8ebbfa969cbe3"
 };
 
 // Initialize Firebase
@@ -68,7 +68,8 @@ export async function getUsers(){
     const docSnap = await getDoc(docRef)
     
     if (docSnap.exists()){
-      return docSnap.data()
+      console.log(docSnap.data())
+      return docSnap.data(),docSnap.id
     }
     else return 'no document'
   }

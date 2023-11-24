@@ -23,6 +23,7 @@ export const CreateUserScreen = (props) => {
   };
 
   return (
+    
     <View style={styles.container}>
       <TextInput
         style={styles.input}

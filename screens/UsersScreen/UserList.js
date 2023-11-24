@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, ScrollView, Button } from 'react-native';
 import { getUsers } from '../../db/firebaseConfig';
-import { ListItem } from 'react-native-elements';
+import { Avatar, ListItem } from 'react-native-elements';
 
 const UserList = (props) => {
   const [users, setUsers] = useState([]);
@@ -34,10 +34,17 @@ const UserList = (props) => {
     onUpdateUserList: fetchData})} />
       {
         users.map(user => (
-          <ListItem key={user.id}>
+          <ListItem
+            key={user.id} bottomDivider onPress={()=>{
+              props.navigation.navigate('UserDetailScreen',{
+                userId: user.id
+              })
+            }}>
             <ListItem.Chevron />
+            <Avatar source={{uri:"https://randomuser.me/api/portraits/men/36.jpg"}} rounded/>
             <ListItem.Content>
               <ListItem.Title>{user.name}</ListItem.Title>
+              <ListItem.Subtitle>{user.email}</ListItem.Subtitle>
             </ListItem.Content>
           </ListItem>
         ))
